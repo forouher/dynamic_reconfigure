@@ -12,42 +12,42 @@ namespace dynamic_reconfigure
 class ConfigTools
 {
 public:
-  static std::vector<dynamic_reconfigure::BoolParameter> &getVectorForType(dynamic_reconfigure::Config &set, const bool val)
+  static ros::messages::types::vector<dynamic_reconfigure::BoolParameter> &getVectorForType(dynamic_reconfigure::Config &set, const bool val)
   {
     return set.bools;
   }
   
-  static std::vector<dynamic_reconfigure::IntParameter> &getVectorForType(dynamic_reconfigure::Config &set, const int val)
+  static ros::messages::types::vector<dynamic_reconfigure::IntParameter> &getVectorForType(dynamic_reconfigure::Config &set, const int val)
   {
     return set.ints;
   }
   
-  static std::vector<dynamic_reconfigure::StrParameter> &getVectorForType(dynamic_reconfigure::Config &set, const std::string &val)
+  static ros::messages::types::vector<dynamic_reconfigure::StrParameter> &getVectorForType(dynamic_reconfigure::Config &set, const std::string &val)
   {
     return set.strs;
   }
   
-  static std::vector<dynamic_reconfigure::DoubleParameter> &getVectorForType(dynamic_reconfigure::Config &set, const double val)
+  static ros::messages::types::vector<dynamic_reconfigure::DoubleParameter> &getVectorForType(dynamic_reconfigure::Config &set, const double val)
   {
     return set.doubles;
   }
   
-  static const std::vector<dynamic_reconfigure::BoolParameter> &getVectorForType(const dynamic_reconfigure::Config &set, const bool val)
+  static const ros::messages::types::vector<dynamic_reconfigure::BoolParameter> &getVectorForType(const dynamic_reconfigure::Config &set, const bool val)
   {
     return set.bools;
   }
   
-  static const std::vector<dynamic_reconfigure::IntParameter> &getVectorForType(const dynamic_reconfigure::Config &set, const int val)
+  static const ros::messages::types::vector<dynamic_reconfigure::IntParameter> &getVectorForType(const dynamic_reconfigure::Config &set, const int val)
   {
     return set.ints;
   }
   
-  static const std::vector<dynamic_reconfigure::StrParameter> &getVectorForType(const dynamic_reconfigure::Config &set, const std::string &val)
+  static const ros::messages::types::vector<dynamic_reconfigure::StrParameter> &getVectorForType(const dynamic_reconfigure::Config &set, const std::string &val)
   {
     return set.strs;
   }
   
-  static const std::vector<dynamic_reconfigure::DoubleParameter> &getVectorForType(const dynamic_reconfigure::Config &set, const double val)
+  static const ros::messages::types::vector<dynamic_reconfigure::DoubleParameter> &getVectorForType(const dynamic_reconfigure::Config &set, const double val)
   {
     return set.doubles;
   }
@@ -91,9 +91,9 @@ public:
   }
 
   template <class VT, class T>
-  static bool getParameter(const std::vector<VT> &vec, const std::string &name, T &val)
+  static bool getParameter(const ros::messages::types::vector<VT> &vec, const std::string &name, T &val)
   {
-    for (typename std::vector<VT>::const_iterator i = vec.begin(); i != vec.end(); ++i)
+    for (typename ros::messages::types::vector<VT>::const_iterator i = vec.begin(); i != vec.end(); ++i)
       if (i->name == name)
       {
         val = i->value;
@@ -122,7 +122,7 @@ public:
   template<class T>
   static bool getGroupState(const dynamic_reconfigure::Config &msg, const std::string &name, T &val)
   {
-    for(std::vector<dynamic_reconfigure::GroupState>::const_iterator i = msg.groups.begin(); i != msg.groups.end(); ++i)
+    for(ros::messages::types::vector<dynamic_reconfigure::GroupState>::const_iterator i = msg.groups.begin(); i != msg.groups.end(); ++i)
       if(i->name == name)
       {
         val.state = i->state;
